@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/College/Semester 6/ANMP KP C/TS/Week 4/ANMP_Week-4/app/src/main/res/layout/activity_main.xml" value="0.17083333333333334" />
-        <entry key="..\:/College/Semester 6/ANMP KP C/TS/Week 4/ANMP_Week-4/app/src/main/res/layout/fragment_student_detail.xml" value="0.17083333333333334" />
-        <entry key="..\:/College/Semester 6/ANMP KP C/TS/Week 4/ANMP_Week-4/app/src/main/res/layout/fragment_student_list.xml" value="0.18" />
+        <entry key="..\:/College/Semester 6/ANMP KP C/TS/Week 4/ANMP_Week-4/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/College/Semester 6/ANMP KP C/TS/Week 4/ANMP_Week-4/app/src/main/res/layout/fragment_student_detail.xml" value="0.22" />
+        <entry key="..\:/College/Semester 6/ANMP KP C/TS/Week 4/ANMP_Week-4/app/src/main/res/layout/fragment_student_list.xml" value="0.33" />
         <entry key="..\:/College/Semester 6/ANMP KP C/TS/Week 4/ANMP_Week-4/app/src/main/res/layout/student_list_item.xml" value="0.25" />
       </map>
     </option>
