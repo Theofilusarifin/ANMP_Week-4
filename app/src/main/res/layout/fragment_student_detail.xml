@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="student"
-            type="id.ac.ubaya.advweek4.model.Student" />
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="student"-->
+<!--            type="id.ac.ubaya.advweek4.model.Student" />-->
 
-        <variable
-            name="listener"
-            type="id.ac.ubaya.advweek4.view.ButtonUpdateClickListener" />
-    </data>
+<!--        <variable-->
+<!--            name="listener"-->
+<!--            type="id.ac.ubaya.advweek4.view.ButtonUpdateClickListener" />-->
+<!--    </data>-->
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -27,8 +27,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:imageUrl="@{student.photoUrl}"
-                android:progressBar="@{progressBar2}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -51,8 +49,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtIdDetail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{student.id}" />
+                    android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -72,8 +69,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtNameDetail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{student.name}" />
+                    android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -94,8 +90,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtBod"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{student.dob}" />
+                    android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -116,8 +111,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtPhone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{student.phone}" />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -127,7 +121,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="UPDATE"
-                android:onClick="@{listener::onButtonUpdateClick}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 

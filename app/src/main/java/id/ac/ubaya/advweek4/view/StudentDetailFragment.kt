@@ -10,24 +10,25 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import id.ac.ubaya.advweek4.R
-import id.ac.ubaya.advweek4.databinding.FragmentStudentDetailBinding
+//import id.ac.ubaya.advweek4.databinding.FragmentStudentDetailBinding
 import id.ac.ubaya.advweek4.viewmodel.DetailViewModel
+import kotlinx.android.synthetic.main.fragment_student_detail.*
 
 class StudentDetailFragment : Fragment(),
     ButtonUpdateClickListener {
 
     private lateinit var viewDetail: DetailViewModel
-    private lateinit var dataBinding: FragmentStudentDetailBinding
+//    private lateinit var dataBinding: FragmentStudentDetailBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        dataBinding = DataBindingUtil.inflate<FragmentStudentDetailBinding>(
-            inflater, R.layout.fragment_student_detail, container, false)
-
-        return dataBinding.root
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+////        dataBinding = DataBindingUtil.inflate<FragmentStudentDetailBinding>(
+////            inflater, R.layout.fragment_student_detail, container, false)
+////
+////        return dataBinding.root
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,12 +45,12 @@ class StudentDetailFragment : Fragment(),
 
     fun observeDetailViewModel() {
         viewDetail.studentLD.observe(viewLifecycleOwner, Observer {
-            dataBinding.student = it
+//            dataBinding.student = it
 
-//            txtIdDetail.setText(it.id)
-//            txtNameDetail.setText(it.name)
-//            txtBod.setText(it.bod)
-//            txtPhone.setText(it.phone)
+            txtIdDetail.setText(it.id)
+            txtNameDetail.setText(it.name)
+            txtBod.setText(it.dob)
+            txtPhone.setText(it.phone)
 //
 //            imageView2.loadImage(it.photoUrl.toString(), progressBar2)
         })
