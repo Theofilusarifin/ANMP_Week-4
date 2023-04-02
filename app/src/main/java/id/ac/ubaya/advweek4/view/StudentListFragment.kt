@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import id.ac.ubaya.advweek4.R
+import id.ac.ubaya.advweek4.model.Student
 import id.ac.ubaya.advweek4.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_student_list.*
 
@@ -33,48 +35,39 @@ class StudentListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.refresh()
 
-        val recView = view.findViewById<RecyclerView>(R.id.recView)
-        recView?.layoutManager = LinearLayoutManager(context)
-        recView?.adapter = studentListAdapter
+        recView.layoutManager = LinearLayoutManager(context)
+        recView.adapter = studentListAdapter
 
-        observeViewModel()
-
-        val swipe = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
-        swipe.setOnRefreshListener {
+        refreshLayout.setOnRefreshListener {
             recView.visibility = View.GONE
             txtError.visibility = View.GONE
             progressLoad.visibility = View.VISIBLE
+
             viewModel.refresh()
+
             refreshLayout.isRefreshing = false
         }
+        observeViewModel()
     }
 
     private fun observeViewModel() {
-        viewModel.studentsLD.observe(viewLifecycleOwner){
-            studentListAdapter.updateStudentList(it)
-        }
-        viewModel.studentLoadErrorLD.observe(viewLifecycleOwner){
-            val txtError = view?.findViewById<TextView>(R.id.txtError)
+        viewModel.studentsLD.observe(viewLifecycleOwner, Observer {
+            studentListAdapter.updateStudentList(it as ArrayList<Student>)
+        })
 
-            txtError?.visibility = if(it) View.VISIBLE else View.GONE
+        viewModel.loadingErrorLD.observe(viewLifecycleOwner, Observer {
+            txtError.visibility = if (it) View.VISIBLE else View.GONE
+        })
 
-            viewModel.loadingLD.observe(viewLifecycleOwner){
-                val recView = view?.findViewById<RecyclerView>(R.id.recView)
-                val progressLoad = view?.findViewById<ProgressBar>(R.id.progressLoad)
-
-                if(it){ //sedang loading
-                    recView?.visibility = View.GONE
-                    progressLoad?.visibility = View.VISIBLE
-                    txtError?.visibility = View.VISIBLE
-                }else{
-                    recView?.visibility = View.VISIBLE
-                    progressLoad?.visibility = View.GONE
-                    txtError?.visibility = View.GONE
-
-                }
+        viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                progressLoad.visibility = View.VISIBLE
+                recView.visibility = View.GONE
+            } else {
+                progressLoad.visibility = View.GONE
+                recView.visibility = View.VISIBLE
             }
-
-        }
+        })
     }
 
 }
